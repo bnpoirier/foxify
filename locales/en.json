@@ -1,0 +1,12 @@
+{
+	"meta_description": "Converts .crx files (Chrome extensions) to .xpi (Firefox extensions). Copy/Paste a Chrome Web Store URL and click \"Download\".",
+	"title_description": "Makes Chrome extensions compatible with Firefox",
+	"index_intro1": "Makes Chrome extensions compatible with Firefox",
+	"index_intro2": "Copy/Paste a <a target=\"_blank\" href=\"https://chrome.google.com/webstore/\">Chrome Web Store</a> extension URL below:",
+	"converter_placeholder": "Copy/Paste Chrome Web Store URL here...",
+	"converter_submit": "Convert & Download",
+	"converter_format_xpi": "Get Firefox extension",
+	"converter_format_zip": "Get sources (.zip)",
+	"converter_format_crx": "Get original file (.crx)",
+	"footer_warning": "<strong>WARNING !</strong><br>Some extensions may be broken after the conversion as Firefox doesn't support all features available on Chrome. These extensions may work partially or be totally corrupted."
+}

@@ -1,0 +1,27 @@
+@media screen and (max-width: 800px) {
+    html{
+        font-size: 14px;
+    }
+
+    .container{
+        width: 100%;
+        padding: 0 1em;
+    }
+
+    .container-centered{
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .converter-submit{
+        position: static;
+        width: 100%;
+    }
+}
+
+@media (max-height:740px){
+    .footer{
+        position: static;
+    }
+}

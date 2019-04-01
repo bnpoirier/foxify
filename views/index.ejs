@@ -1,0 +1,53 @@
+<html lang="<%= getLocale() %>">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="<%= __("meta_description") %>" />
+    <meta property="og:title" content="Foxify | <%- __("title_description") %>" />
+    <meta property="og:description" content="<%= __("meta_description") %>" />
+    <meta property="og:url" content="https://www.foxify.org" />
+    <link rel="alternate" hreflang="fr" href="https://www.foxify.org/?lang=fr">
+    <link rel="alternate" hreflang="en" href="https://www.foxify.org/?lang=en">
+    <style><%- istatic('assets/css/main.css') %></style>
+    <title>Foxify | <%- __("title_description") %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-centered">
+            <div class="header">
+                <h1>
+                    <a href="/">
+                        Foxify<small>.org</small>
+                    </a>
+                </h1>
+                <p class="introduction">
+                    <%- __("index_intro1") %><br>
+                    <%- __("index_intro2") %>
+                </p>
+            </div>
+            <form id="converter" class="converter" action="/" method="POST">
+                <div class="converter-box">
+                    <input type="text" class="converter-input" name="u" placeholder="<%- __("converter_placeholder") %>" autocomplete="off">
+                    <input type="submit" class="converter-submit" value="<%- __("converter_submit") %>">
+                </div>
+                <input name="format" id="format-xpi" type="radio" value="xpi" checked="checked">
+                <label for="format-xpi"><%- __("converter_format_xpi") %></label>
+                <input name="format" id="format-zip" type="radio" value="zip">
+                <label for="format-zip"><%- __("converter_format_zip") %></label>
+                <input name="format" id="format-crx" type="radio" value="crx">
+                <label for="format-crx"><%- __("converter_format_crx") %></label>
+
+                <input type="hidden" name="force_dl" value="<%= force_dl %>">
+            </form>
+            <%- include('faq/'+getLocale()) %>
+        </div>
+    </div>
+    <script type="text/javascript">
+      <%- istatic('assets/js/app.js') %>
+    </script>
+</body>
+
+</html>

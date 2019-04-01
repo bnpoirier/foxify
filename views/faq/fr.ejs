@@ -1,0 +1,46 @@
+<div class="faq">
+    <div class="faq-intro">
+        Depuis la version <b>53</b> de Mozilla Firefox, seules les version <b>Firefox Nightly, Firefox Developer Edition</b>  peuvent installer des extensions non signés.
+        En cas de problème, la FAQ ci-dessous peut vous aider.
+    </div>
+    <div class="faq-box">
+        <h3 class="faq-question">Installer tout de même une extension sur ma version de Firefox</h3>
+        <div class="faq-answer">
+            <p>Vous pouvez tout de même installer des extensions non signés sur Mozilla Firefox mais de manière <b>non durable</b>.</p>
+            <ol>
+                <li>Rendez-vous à cette adresse : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a></li>
+                <li>Télécharger votre extension - Sélectionnez <b>"Convertir pour Firefox"</b></li>
+                <li>Sur votre navigateur : <b>☰ > Modules complémentaires > ⚙ > Installer un module depuis un fichier</b></li>
+                <li>Séléctionnez votre extension <b>.xpi</b> et cliquez sur "Ouvrir"</li>
+                <li><b>Votre extension est temporairement installée !</b></li>
+            </ol>   
+        </div>
+    </div>
+    <div class="faq-box">
+        <h3 class="faq-question">"Firefox a empêché ce site d'installer un module complémentaire non vérifié"</h3>
+        <div class="faq-answer">
+            <p>Par défaut, Firefox empêche l'installation de modules complémentaires non signés par mesure de sécurité.</p>
+            <ul>
+                <li><b>Si vous êtes sur la version standard de Firefox</b>, vous ne pouvez pas changer cette mesure de sécurité. Il vous faut passer par Firefox Nightly ou Firefox Developer Edition</li>
+                <li><b>Si vous êtes sur la version Firefox Nightly, Firefox Developer Edition</b><br>
+                    C'est super ! Il vous suffit de suivre la procédure suivante :
+                    <ol>
+                        <li>Dans votre navigateur, tapez l'adresse <b>about:config</b> pour configurer Firefox</li>
+                        <li>Cliquez sur <b>"Je prends le risque"</b>. Nous allons modifier un paramètre qui va permettre d'autoriser l'installation d'extensions venant d'un autre site que <b>addons.mozilla.org</b></li>
+                        <li>Recherchez <b>"xpinstall"</b></li>
+                        <li>Mettre <b>"xpinstall.signatures.required"</b> à <b>"False"</b></li>
+                        <li>Retournez sur foxify.org et téléchargez votre extension</li>
+                        <li>Firefox reconnaît votre extension. Cliquez sur <b>"Autoriser"</b></li>
+                        <li><b>L'installation devrait se déclencher seul. Félicitations !</b></li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="faq-box">
+        <h3 class="faq-question">"Cette extension n'a pas pu être installée car elle semble corrompue"</h3>
+        <div class="faq-answer">
+            <p>Firefox ne prends pas en charge l'entièreté des extensions de Chrome car certaines fonctionnalités de Chrome n'existe pas sur Firefox ou fonctionne différemment. Vous ne pouvez donc pas installer l'extension.</p>
+        </div>
+    </div>
+</div>

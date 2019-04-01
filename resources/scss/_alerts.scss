@@ -1,0 +1,20 @@
+.msg{
+    border-radius: 4px;
+    text-align: left;
+    padding: 10px 15px;
+}
+
+.danger{
+    background: $danger;
+    color: #ffffff;
+}
+
+.success{
+    background: $success;
+    color: #ffffff;
+}
+
+.alert{
+    border: 1px solid $warning;
+    color: $warning;
+}
