@@ -1,25 +1,31 @@
 <div class="faq">
-    <div class="faq-intro">
-        Depuis la version <b>53</b> de Mozilla Firefox, seules les version <b>Firefox Nightly, Firefox Developer Edition</b>  peuvent installer des extensions non signés.
-        En cas de problème, la FAQ ci-dessous peut vous aider.
+    <div class="faq-intro warning">
+        <span>Attention !</span> Vous ne pouvez plus installer une extension depuis ce site en cliquant seulement sur "Télécharger" comme avant. Il existe cependant une solution temporaire que vous trouverez ci-dessous.
     </div>
     <div class="faq-box">
-        <h3 class="faq-question">Installer tout de même une extension sur ma version de Firefox</h3>
+        <h3 class="faq-question">A propos / Comment ce site converti-t-il une extension ?</h3>
         <div class="faq-answer">
-            <p>Vous pouvez tout de même installer des extensions non signés sur Mozilla Firefox mais de manière <b>non durable</b>.</p>
+            <p>Cet outil n'est pas d'une grande complexité. Les tâches qu'il éxecute sont des tâches que vous pourriez faire vous même à la main comme vous allez le voir.</p>
             <ol>
-                <li>Rendez-vous à cette adresse : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a></li>
-                <li>Télécharger votre extension - Sélectionnez <b>"Convertir pour Firefox"</b></li>
-                <li>Sur votre navigateur : <b>☰ > Modules complémentaires > ⚙ > Installer un module depuis un fichier</b></li>
-                <li>Séléctionnez votre extension <b>.xpi</b> et cliquez sur "Ouvrir"</li>
-                <li><b>Votre extension est temporairement installée !</b></li>
-            </ol>   
+                <li>Tout d'abord, Foxify récupère votre extension en la téléchargeant sur le <b>Chrome Web Store</b></li>
+                <li><b>Une fois téléchargée, la conversion commence</b> : Les extensions Chrome sont de simples archives avec une signature placée après l'en-tête du fichier. Celle-ci est retirée pour obtenir l'archive.</li>
+                <li>Le fichier <b>.zip</b> obtenu est ensuite extrait afin d'ajouter une propriété dans le fichier <b>manifest.json</b>: 
+                    <pre><code>
+        gecko: {
+            'id': "name-of-your-addon@foxify"
+        }
+                    </code></pre>
+                    <i>NOTE : Cette propriété n'est plus obligatoire depuis <b>Firefox 48</b> mais Foxify continue de l'écrire pour les versions de Firefox antérieures.</i>
+                </li>
+                <li>Le fichier est de nouveau compressé. <b>C'est presque prêt !</b> Il suffit juste de changer l'extension en <b>.xpi</b> pour que Firefox reconaisse le fichier comme une extension.</li>
+                <li><b>Et c'est tout ! Le téléchargement de votre extension se lance.</b></li>
+            </ol>
         </div>
     </div>
     <div class="faq-box">
         <h3 class="faq-question">"Firefox a empêché ce site d'installer un module complémentaire non vérifié"</h3>
         <div class="faq-answer">
-            <p>Par défaut, Firefox empêche l'installation de modules complémentaires non signés par mesure de sécurité.</p>
+            <p>Par défaut, Firefox empêche l'installation de modules complémentaires non vérifié par mesure de sécurité.</p>
             <ul>
                 <li><b>Si vous êtes sur la version standard de Firefox</b>, vous ne pouvez pas changer cette mesure de sécurité. Il vous faut passer par Firefox Nightly ou Firefox Developer Edition</li>
                 <li><b>Si vous êtes sur la version Firefox Nightly, Firefox Developer Edition</b><br>
@@ -38,9 +44,38 @@
         </div>
     </div>
     <div class="faq-box">
-        <h3 class="faq-question">"Cette extension n'a pas pu être installée car elle semble corrompue"</h3>
+        <h3 class="faq-question">Pourquoi Firefox empêche d'installer un module complémentaire converti par Foxify ?</h3>
         <div class="faq-answer">
-            <p>Firefox ne prends pas en charge l'entièreté des extensions de Chrome car certaines fonctionnalités de Chrome n'existe pas sur Firefox ou fonctionne différemment. Vous ne pouvez donc pas installer l'extension.</p>
+            <p>
+                <b>Depuis la version 53</b>, Firefox ne fait plus confiance qu'à son propre site <a href="https://addons.mozilla.org">addons.mozilla.org</a>. Tout autre site souhaitant installer une extension (comme celui-ci) est bloqué par sécurité. 
+            </p>
+            <p>
+                Voici pourquoi l'installation est refusée. Ce comportement est imposé par le navigateur et ne peut être changé que sur les versions <b>Nightly</b> et <b>Developer Edition</b>.
+            </p>
+        </div>
+    </div>
+    <div class="faq-box">
+        <h3 class="faq-question">Installer tout de même une extension convertie sur la version standard de Firefox</h3>
+        <div class="faq-answer">
+            <p>Vous pouvez tout de même installer des extensions non vérifié sur Mozilla Firefox mais de manière <b>non durable</b>.</p>
+            <ol>
+                <li>Rendez-vous à cette adresse : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a></li>
+                <li>Télécharger votre extension - Sélectionnez <b>"Convertir pour Firefox"</b></li>
+                <li>Sur votre navigateur : <b>☰ > Modules complémentaires > ⚙ > Installer un module depuis un fichier</b></li>
+                <li>Séléctionnez votre extension <b>.xpi</b> et cliquez sur "Ouvrir"</li>
+                <li><b>Votre extension est temporairement installée !</b></li>
+            </ol>   
+        </div>
+    </div>
+    <div class="faq-box">
+        <h3 class="faq-question">L'extension que j'ai installé ne fonctionne pas</h3>
+        <div class="faq-answer">
+            <p>
+                Si Firefox peut aujourd'hui installer des extensions Google Chrome, c'est parce que <b>l'API Extension de Chrome est désormais supporté par Mozilla Firefox.</b> Les extensions Chrome peuvent donc être utilisées sur Firefox.
+            </p>
+            <p>
+                <b>Cependant, Firefox n'a pas intégré l'intégralité des fonctionnalités de cette API.</b> Cela peut provoquer des <b>crashs</b> sur certaines extensions ou des <b>dysfonctionnements</b> lors de leur utilisation.
+            </p>
         </div>
     </div>
 </div>
