@@ -10,9 +10,18 @@ body{
     color: #697582;
 }
 
-p{
-    margin: 1em 0;
+p,
+pre,
+code, 
+li{
     line-height: 1.6;
+}
+
+p,
+ul,
+ol,
+dl{
+    margin: 1em 0;
 }
 
 a{
