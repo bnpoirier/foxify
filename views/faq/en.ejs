@@ -6,13 +6,15 @@
     <div class="warning-msg-collapsible">
         <div class="box-body">
             <p>You can still install extensions from this site but it depends on the version of your Firefox browser</p>
-            
-            <h2>You are using Mozilla Firefox</h2>
-            
+            <ul>
+                <li><a href="#use-mozilla-firefox">You are using Mozilla Firefox</a></li>
+                <li><a href="#use-mozilla-firefox-nightly-or-developer">You are using Mozilla Firefox Developer Edition / Nightly Edition</a></li>
+            </ul>
+
+            <h2 id="use-mozilla-firefox">You are using Mozilla Firefox</h2>
             <p>
                 <b>Unfortunately, you can only install your extension temporarily.</b> unless you install Firefox Nightly or Firefox Developer Edition
-            </p>
-                
+            </p>     
             <ol>
                 <li>Click on the link here : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a> <i>(This is to force download extension after conversion)</i></li>
                 <li>Download your addon - Select <b>"Get Firefox extension"</b></li>
@@ -21,10 +23,8 @@
                 <li><b>Your extension is temporary installed !</b></li>
             </ol> 
 
-            <h2>You are using Mozilla Firefox Developer Edition / Nightly</h2>
-            
+            <h2 id="use-mozilla-firefox-nightly-or-developer">You are using Mozilla Firefox Developer Edition / Nightly</h2>
             <p>Just follow those steps :</p>
-            
             <ol>
                 <li>On your address bar, type <b>about:config</b> to configure Mozilla Firefox</li>
                 <li>Cliquez sur <b>"I accept the risk"</b>. We are going to change a configuration variable which allows / refuses installations of add-ons that doesn't came from <b>addons.mozilla.org</b></li>
@@ -34,25 +34,6 @@
                 <li>Firefox ask for your authorization. Click on <b>"Allow"</b></li>
                 <li><b>Your add-on is installed </b></li>
             </ol>
-        </div>
-        <div class="faq">
-            <div class="faq-box">
-                <h3 class="faq-question">Why does Firefox prevent this site from installing an add-on?</h3>
-                <div class="faq-answer">
-                    <p>
-                        <b>Since version 53</b>, Firefox only trust it's store <a href="https://addons.mozilla.org">addons.mozilla.org</a>. Any website (like Foxify) that asks for installing an extension is blocked and you can't change this behavior like before.
-                    </p>
-                    <p>
-                        That's why your extension can't be installed by Foxify anymore. Only <b>Nightly</b> and <b>Developer Edition</b> can now change the behavior and allow extension installation.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-box">
-                <h3 class="faq-question">"Add-on is corrupted and cannot be installed"</h3>
-                <div class="faq-answer">
-                    <p>Firefox can support Chrome add-ons because it embeds the Chrome Extension API but some functionalities are still not supported by Firefox so you may see some add-ons crashes or malfunctions.</p>
-                </div>
-            </div>
         </div>
     </div>
     <a class="warning-msg-more" href="#">Show / Hide the solution</a>

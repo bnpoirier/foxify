@@ -10,9 +10,18 @@ body{
     color: #697582;
 }
 
-p{
-    margin: 1em 0;
+p,
+pre,
+code, 
+li{
     line-height: 1.6;
+}
+
+p,
+ul,
+ol,
+dl{
+    margin: 1em 0;
 }
 
 a{
@@ -43,8 +52,9 @@ h1 a{
 
 h2{
     font-size: 1.2em;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0.5px;
+    margin-top: 2em;
     margin-bottom: 0.5em;
 }
 
@@ -57,6 +67,35 @@ hr {
     height: 0;
     border-top: 1px solid $light-grey;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+ol{
+    padding-left: 15px;
+    counter-reset: list-counter;
+}
+
+ol li{
+    position: relative;
+    counter-increment: list-counter;
+    padding-left: 40px;
+    list-style-type: none;
+    margin-bottom: 0.5em;
+}
+
+ol li::before{
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    content: counter(list-counter);
+    color: $primary;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9em;
+    border: 1px solid $primary;
+    border-radius: 50%;
+    line-height: 25px;
+    width: 25px;
+    margin-right: 15px;
 }
 
 .container{
