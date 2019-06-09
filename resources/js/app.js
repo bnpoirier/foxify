@@ -6,6 +6,9 @@ const converter_input = document.querySelector('.converter-input');
 const converter_submit = document.querySelector('.converter-submit');
 const converter_box = document.querySelector('.converter-box');
 
+const warning_box = document.querySelector('.warning-msg-box');
+const warning_more_btn = document.querySelector('.warning-msg-more');
+
 // Node lists
 const faq_questions = document.getElementsByClassName('faq-question');
 const faq_boxes = document.getElementsByClassName('faq-box');
@@ -62,6 +65,17 @@ const onFaqClick = (e) => {
     }
     else
         faq_box.classList.remove(OPEN_CLASSNAME);
+}
+
+const onWarningMoreBtnClick = (e) => {
+    e.preventDefault();
+
+    // Toggle class open
+    if(!warning_box.classList.contains(OPEN_CLASSNAME))
+        // Add class to the clicked box
+        warning_box.classList.add(OPEN_CLASSNAME);
+    else
+        warning_box.classList.remove(OPEN_CLASSNAME);
 }
 
 /**
@@ -128,6 +142,9 @@ const init = () => {
     // Form interactions
     converter_input.addEventListener("focus", onFocus);
     converter_form.addEventListener("submit", onSubmit);
+
+    // Warning button interactions
+    warning_more_btn.addEventListener("click", onWarningMoreBtnClick);
 
     // FAQ interactions
     Array.from(faq_questions).forEach((faq_question) => {

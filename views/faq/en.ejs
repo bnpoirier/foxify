@@ -1,76 +1,60 @@
-<div class="faq">
-    <div class="faq-intro">
-        <span>Warning !</span> You can't install a converted extension anymore by just clicking on "Convert & Download" but you can find a temporary solution on the FAQ below.
+<div class="warning-msg-box box collapsible">
+    <h2 class="box-header">Installation doesn't work ? Please read this !</h2>
+    <div class="box-body">
+        <p>Since version 53, you can't install a converted extension anymore by just clicking on "Convert & Download" but you can find a temporary solution below.</p>
     </div>
-    <div class="faq-box">
-        <h3 class="faq-question">What this site actually does when converting an add-on ?</h3>
-        <div class="faq-answer">
-            <p>This site doesn't make complex things. You can do by yourself most of the tasks below but Foxify converts extensions in a few seconds. Here are the steps of conversion:</p>
-            <ol>
-                <li>First, Foxify downloads the requested extension from the Chrome Web Store website</li>
-                <li>Then, the conversion starts. Chrome extensions are simply signed zip archive so signature is removed to get the zip archive.</li>
-                <li>.zip file is then extracted and the following line is added to the <b>manifest.json</b> so Firefox recognize this extension as compatible : 
-                    <pre><code>
-    gecko: {
-        'id': "name-of-your-addon@foxify"
-    }
-                    </code></pre>
-                    <i>NOTE : This property isn't mandatory anymore since <b>Firefox 48</b> but Foxify continues to write it into the <b>manifest.json</b> for previous versions.</i>
-                </li>
-                <li>File is zipped again but the extension is now <b>.xpi</b> so Firefox recognize the archive as an extension.</li>
-                <li>And that's it! The converted extension is sent to your browser and download starts.</li>
-            </ol>
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">"Firefox has prevented this site from installing an unverified add-on"</h3>
-        <div class="faq-answer">
-            <p>By default, Firefox prevents unverified add-ons installations for the security of your computer.</p>
-            <ul>
-                <li><b>If you use the Firefox Standard Edition</b>, you can't change this behavior but a quick temporary solution is available here. Otherwise, you must use <b>Firefox Nightly</b> or <b>Firefox Developer Edition</b></li>
-                <li><b>If you use the Firefox Nightly or Firefox Developer Edition</b><br>
-                    Just follow those steps :
-                    <ol>
-                        <li>On your address bar, type <b>about:config</b> to configure Mozilla Firefox</li>
-                        <li>Cliquez sur <b>"I accept the risk"</b>. We are going to change a configuration variable which allows / refuses installations of add-ons that doesn't came from <b>addons.mozilla.org</b></li>
-                        <li>Search for <b>"xpinstall"</b></li>
-                        <li>Set <b>"xpinstall.signatures.required"</b> option to <b>"True"</b> by double-clicking on it</li>
-                        <li>Go back to foxify.org and download your extension</li>
-                        <li>Firefox ask for your authorization. Click on <b>"Allow"</b></li>
-                        <li><b>Your add-on is installed </b></li>
-                    </ol>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">Why does Firefox prevent this site from installing an add-on?</h3>
-        <div class="faq-answer">
+    <div class="warning-msg-collapsible">
+        <div class="box-body">
+            <p>You can still install extensions from this site but it depends on the version of your Firefox browser</p>
+            
+            <h2>You are using Mozilla Firefox</h2>
+            
             <p>
-                <b>Since version 53</b>, Firefox only trust it's store <a href="https://addons.mozilla.org">addons.mozilla.org</a>. Any website (like Foxify) that asks for installing an extension is blocked and you can't change this behavior like before.
+                <b>Unfortunately, you can only install your extension temporarily.</b> unless you install Firefox Nightly or Firefox Developer Edition
             </p>
-            <p>
-                That's why your extension can't be installed by Foxify anymore. Only <b>Nightly</b> and <b>Developer Edition</b> can now change the behavior and allow extension installation.
-            </p>
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">Install a converted extension on the Firefox common version anyway</h3>
-        <div class="faq-answer">
-            <p>You can still install extensions from this website but not in the <b>long term</b>
+                
             <ol>
                 <li>Click on the link here : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a> <i>(This is to force download extension after conversion)</i></li>
                 <li>Download your addon - Select <b>"Get Firefox extension"</b></li>
                 <li>Go to the browser topbar : <b>☰ > Add-ons > ⚙ > Install Add-on From File...</b></li>
                 <li>Select your freshly downloaded extension which has the  <b>.xpi</b> and open it</li>
                 <li><b>Your extension is temporary installed !</b></li>
-            </ol>   
+            </ol> 
+
+            <h2>You are using Mozilla Firefox Developer Edition / Nightly</h2>
+            
+            <p>Just follow those steps :</p>
+            
+            <ol>
+                <li>On your address bar, type <b>about:config</b> to configure Mozilla Firefox</li>
+                <li>Cliquez sur <b>"I accept the risk"</b>. We are going to change a configuration variable which allows / refuses installations of add-ons that doesn't came from <b>addons.mozilla.org</b></li>
+                <li>Search for <b>"xpinstall"</b></li>
+                <li>Set <b>"xpinstall.signatures.required"</b> option to <b>"True"</b> by double-clicking on it</li>
+                <li>Go back to foxify.org and download your extension</li>
+                <li>Firefox ask for your authorization. Click on <b>"Allow"</b></li>
+                <li><b>Your add-on is installed </b></li>
+            </ol>
+        </div>
+        <div class="faq">
+            <div class="faq-box">
+                <h3 class="faq-question">Why does Firefox prevent this site from installing an add-on?</h3>
+                <div class="faq-answer">
+                    <p>
+                        <b>Since version 53</b>, Firefox only trust it's store <a href="https://addons.mozilla.org">addons.mozilla.org</a>. Any website (like Foxify) that asks for installing an extension is blocked and you can't change this behavior like before.
+                    </p>
+                    <p>
+                        That's why your extension can't be installed by Foxify anymore. Only <b>Nightly</b> and <b>Developer Edition</b> can now change the behavior and allow extension installation.
+                    </p>
+                </div>
+            </div>
+            <div class="faq-box">
+                <h3 class="faq-question">"Add-on is corrupted and cannot be installed"</h3>
+                <div class="faq-answer">
+                    <p>Firefox can support Chrome add-ons because it embeds the Chrome Extension API but some functionalities are still not supported by Firefox so you may see some add-ons crashes or malfunctions.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="faq-box">
-        <h3 class="faq-question">"Add-on is corrupted and cannot be installed"</h3>
-        <div class="faq-answer">
-            <p>Firefox can support Chrome add-ons because it embeds the Chrome Extension API but some functionalities are still not supported by Firefox so you may see some add-ons crashes or malfunctions.</p>
-        </div>
-    </div>
+    <a class="warning-msg-more" href="#">Show / Hide the solution</a>
 </div>
+

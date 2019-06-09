@@ -1,15 +1,10 @@
-.faq{
-    background: #ffffff;
-    box-shadow: 0px 1px 1px 0px $light-grey;
-    border-radius: 4px;
-    margin-top: 50px;
-    margin-top: 5vh;
-    overflow: hidden;
-}
-
 .faq-box,
 .faq-intro{
     border-bottom: 1px solid $light-grey;
+}
+
+.faq-box:last-of-type{
+    border-bottom: none;
 }
 
 .faq-box.open .faq-answer{
@@ -26,7 +21,7 @@
 }
 
 .faq-question{
-    font-size: initial;
+    font-size: inherit;
     cursor: pointer;
     -webkit-user-select: none; /* Safari 3.1+ */
     -moz-user-select: none; /* Firefox 2+ */
