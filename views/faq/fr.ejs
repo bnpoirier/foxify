@@ -1,81 +1,44 @@
-<div class="faq">
-    <div class="faq-intro warning">
-        <span>Attention !</span> Vous ne pouvez plus installer une extension depuis ce site en cliquant seulement sur "Télécharger" comme avant. Il existe cependant une solution temporaire que vous trouverez ci-dessous.
+<div class="warning-msg-box box">
+    <h2 class="box-header">L'installation de l'extension ne marche pas ? Lisez ceci !</h2>
+    <div class="box-body">
+        <p>Depuis la version 53 de Firefox, l'installation d'une extension convertie depuis Foxify est devenu compliqué. Une solution est donnée ci-dessous.</p>
     </div>
-    <div class="faq-box">
-        <h3 class="faq-question">A propos / Comment ce site converti-t-il une extension ?</h3>
-        <div class="faq-answer">
-            <p>Cet outil n'est pas d'une grande complexité. Les tâches qu'il éxecute sont des tâches que vous pourriez faire vous même à la main comme vous allez le voir.</p>
+    <div class="warning-msg-collapsible">
+        <div class="box-body">
+            <p><b>Pour des raisons de sécurité, Firefox bloque désormais les extensions non signées / non vérifiées</b> ce qui est normal dans notre cas puisque l'extension est convertie et téléchargée depuis Chrome Web Store.</p>
+            <p>Vous trouverez ici la solution à ce problème mais l'installation est différente selon la version de Firefox que vous utilisez.</p>
+            <ul>
+                <li><a href="#use-mozilla-firefox">Vous utilisez Mozilla Firefox</a></li>
+                <li><a href="#use-mozilla-firefox-nightly-or-developer">Vous utilisez Mozilla Firefox Developer Edition / Nightly Edition</a></li>
+            </ul>
+
+            <h2 id="use-mozilla-firefox">Vous utilisez Mozilla Firefox</h2>
+            <p>
+                <b>L'installation des extensions sont désormais temporaire</b> pour des raisons de sécurité imposé par Mozilla. Nous vous conseillons d'installer <b>Firefox Nightly</b> ou <b>Firefox Developer Edition</b> pour installer de manière permanente votre extension.
+            </p>     
+            <p>Sinon, suivez ces étapes :</p>
             <ol>
-                <li>Tout d'abord, Foxify récupère votre extension en la téléchargeant sur le <b>Chrome Web Store</b></li>
-                <li><b>Une fois téléchargée, la conversion commence</b> : Les extensions Chrome sont de simples archives avec une signature placée après l'en-tête du fichier. Celle-ci est retirée pour obtenir l'archive.</li>
-                <li>Le fichier <b>.zip</b> obtenu est ensuite extrait afin d'ajouter une propriété dans le fichier <b>manifest.json</b>: 
-                    <pre><code>
-        gecko: {
-            'id': "name-of-your-addon@foxify"
-        }
-                    </code></pre>
-                    <i>NOTE : Cette propriété n'est plus obligatoire depuis <b>Firefox 48</b> mais Foxify continue de l'écrire pour les versions de Firefox antérieures.</i>
-                </li>
-                <li>Le fichier est de nouveau compressé. <b>C'est presque prêt !</b> Il suffit juste de changer l'extension en <b>.xpi</b> pour que Firefox reconaisse le fichier comme une extension.</li>
-                <li><b>Et c'est tout ! Le téléchargement de votre extension se lance.</b></li>
+                <li>Cliquez sur ce lien : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a> <i>(Cela permet de forcer le téléchargement au lieu de lancer l'installation)</i></li>
+                <li>Sélectionnez <b>"Convertir pour Firefox"</b> puis cliquez sur <b>Télécharger</b></li>
+                <li>Dans la barre du navigateur : <b>☰ > Modules complémentaires > ⚙ > Déboguer des modules > Charger un module complémentaire</b></li>
+                <li>Sélectionnez votre extension en <b>.xpi</b> et ouvrez là.</li>
+                <li><b>Votre extension est installée mais temporairement.</b></li>
+            </ol> 
+
+            <h2 id="use-mozilla-firefox-nightly-or-developer">Vous utilisez Mozilla Firefox Developer Edition / Nightly</h2>
+            
+            <p>Suivez juste ces étapes :</p>
+            <ol>
+                <li>Dans la barre d'adresse, entrez <b>about:config</b> pour rentrer dans les paramètres avancés de Mozilla Firefox</li>
+                <li>Cliquez sur <b>"Je prends le risque"</b>. Nous allons changer une variable de configuration qui autorise l'installation d'extensions non signées.</li>
+                <li>Cherchez <b>"xpinstall"</b></li>
+                <li>Mettez <b>"xpinstall.signatures.required"</b> à <b>"True"</b> en double-cliquant dessus.</li>
+                <li>Retournez sur foxify.org et téléchargez votre extension</li>
+                <li>Firefox demande votre autorisation. Cliquez sur <b>"Autoriser"</b></li>
+                <li><b>Votre extension est installée.</b></li>
             </ol>
         </div>
     </div>
-    <div class="faq-box">
-        <h3 class="faq-question">"Firefox a empêché ce site d'installer un module complémentaire non vérifié"</h3>
-        <div class="faq-answer">
-            <p>Par défaut, Firefox empêche l'installation de modules complémentaires non vérifié par mesure de sécurité.</p>
-            <ul>
-                <li><b>Si vous êtes sur la version standard de Firefox</b>, vous ne pouvez pas changer cette mesure de sécurité. Il vous faut passer par Firefox Nightly ou Firefox Developer Edition</li>
-                <li><b>Si vous êtes sur la version Firefox Nightly, Firefox Developer Edition</b><br>
-                    C'est super ! Il vous suffit de suivre la procédure suivante :
-                    <ol>
-                        <li>Dans votre navigateur, tapez l'adresse <b>about:config</b> pour configurer Firefox</li>
-                        <li>Cliquez sur <b>"Je prends le risque"</b>. Nous allons modifier un paramètre qui va permettre d'autoriser l'installation d'extensions venant d'un autre site que <b>addons.mozilla.org</b></li>
-                        <li>Recherchez <b>"xpinstall"</b></li>
-                        <li>Mettre <b>"xpinstall.signatures.required"</b> à <b>"False"</b></li>
-                        <li>Retournez sur foxify.org et téléchargez votre extension</li>
-                        <li>Firefox reconnaît votre extension. Cliquez sur <b>"Autoriser"</b></li>
-                        <li><b>L'installation devrait se déclencher seul. Félicitations !</b></li>
-                    </ol>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">Pourquoi Firefox empêche d'installer un module complémentaire converti par Foxify ?</h3>
-        <div class="faq-answer">
-            <p>
-                <b>Depuis la version 53</b>, Firefox ne fait plus confiance qu'à son propre site <a href="https://addons.mozilla.org">addons.mozilla.org</a>. Tout autre site souhaitant installer une extension (comme celui-ci) est bloqué par sécurité. 
-            </p>
-            <p>
-                Voici pourquoi l'installation est refusée. Ce comportement est imposé par le navigateur et ne peut être changé que sur les versions <b>Nightly</b> et <b>Developer Edition</b>.
-            </p>
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">Installer tout de même une extension convertie sur la version standard de Firefox</h3>
-        <div class="faq-answer">
-            <p>Vous pouvez tout de même installer des extensions non vérifié sur Mozilla Firefox mais de manière <b>non durable</b>.</p>
-            <ol>
-                <li>Rendez-vous à cette adresse : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a></li>
-                <li>Télécharger votre extension - Sélectionnez <b>"Convertir pour Firefox"</b></li>
-                <li>Sur votre navigateur : <b>☰ > Modules complémentaires > ⚙ > Installer un module depuis un fichier</b></li>
-                <li>Séléctionnez votre extension <b>.xpi</b> et cliquez sur "Ouvrir"</li>
-                <li><b>Votre extension est temporairement installée !</b></li>
-            </ol>   
-        </div>
-    </div>
-    <div class="faq-box">
-        <h3 class="faq-question">L'extension que j'ai installé ne fonctionne pas</h3>
-        <div class="faq-answer">
-            <p>
-                Si Firefox peut aujourd'hui installer des extensions Google Chrome, c'est parce que <b>l'API Extension de Chrome est désormais supporté par Mozilla Firefox.</b> Les extensions Chrome peuvent donc être utilisées sur Firefox.
-            </p>
-            <p>
-                <b>Cependant, Firefox n'a pas intégré l'intégralité des fonctionnalités de cette API.</b> Cela peut provoquer des <b>crashs</b> sur certaines extensions ou des <b>dysfonctionnements</b> lors de leur utilisation.
-            </p>
-        </div>
-    </div>
+    <a class="warning-msg-more" href="#">Show / Hide the solution</a>
 </div>
+    

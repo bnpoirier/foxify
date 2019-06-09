@@ -1,10 +1,11 @@
-<div class="warning-msg-box box collapsible">
-    <h2 class="box-header">Installation doesn't work ? Please read this !</h2>
+<div class="warning-msg-box box">
+    <h2 class="box-header">Installation of your extension doesn't work ? Please read this !</h2>
     <div class="box-body">
-        <p>Since version 53, you can't install a converted extension anymore by just clicking on "Convert & Download" but you can find a temporary solution below.</p>
+        <p>Since version 53 of Firefox, installing a converted extension from Foxify has become complicated. A solution is given below.</p>
     </div>
     <div class="warning-msg-collapsible">
         <div class="box-body">
+            <p><b>For security reasons, Firefox now stops installations of extensions that have not been signed / verified</b> which is normal in our case because the extension you downloaded and converted is from the Chrome Web Store.</p>
             <p>You can still install extensions from this site but it depends on the version of your Firefox browser</p>
             <ul>
                 <li><a href="#use-mozilla-firefox">You are using Mozilla Firefox</a></li>
@@ -13,21 +14,24 @@
 
             <h2 id="use-mozilla-firefox">You are using Mozilla Firefox</h2>
             <p>
-                <b>Unfortunately, you can only install your extension temporarily.</b> unless you install Firefox Nightly or Firefox Developer Edition
-            </p>     
+                <b>Extensions installations are now temporary</b> for security reasons enforced by Mozilla. We suggest you to install <b>Firefox Nightly</b> or <b>Firefox Developer Edition</b> in order to be able to install your extension permanently.
+            </p>  
+            <p>
+                Otherwise, follow those steps :
+            </p>   
             <ol>
-                <li>Click on the link here : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a> <i>(This is to force download extension after conversion)</i></li>
-                <li>Download your addon - Select <b>"Get Firefox extension"</b></li>
-                <li>Go to the browser topbar : <b>☰ > Add-ons > ⚙ > Install Add-on From File...</b></li>
-                <li>Select your freshly downloaded extension which has the  <b>.xpi</b> and open it</li>
-                <li><b>Your extension is temporary installed !</b></li>
+                <li>Click on the link here : <a href="/?force_dl=true">https://www.foxify.org/?force_dl=true</a> <i>(It forces download extension after conversion instead of installing it)</i></li>
+                <li>Select <b>"Get Firefox extension"</b> and click on <b>Convert and Download</b></li>
+                <li>Go to the browser topbar : <b>☰ > Add-ons > ⚙ > Debug Add-ons > Load Temporary Add-on</b></li>
+                <li>Select your freshly downloaded <b>.xpi</b> extension and open it</li>
+                <li><b>Your extension is installed but temporarily</b></li>
             </ol> 
 
             <h2 id="use-mozilla-firefox-nightly-or-developer">You are using Mozilla Firefox Developer Edition / Nightly</h2>
             <p>Just follow those steps :</p>
             <ol>
                 <li>On your address bar, type <b>about:config</b> to configure Mozilla Firefox</li>
-                <li>Cliquez sur <b>"I accept the risk"</b>. We are going to change a configuration variable which allows / refuses installations of add-ons that doesn't came from <b>addons.mozilla.org</b></li>
+                <li>Click on <b>"I accept the risk"</b>. We are going to change a configuration variable which allows / denies installations of non-signed add-ons</li>
                 <li>Search for <b>"xpinstall"</b></li>
                 <li>Set <b>"xpinstall.signatures.required"</b> option to <b>"True"</b> by double-clicking on it</li>
                 <li>Go back to foxify.org and download your extension</li>
