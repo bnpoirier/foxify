@@ -1,11 +1,15 @@
 import '../scss/app.scss';
 
-// DOM Elements
+// Converter elements
 const converter_form = document.querySelector(".converter");
 const converter_input = document.querySelector('.converter-input');
 const converter_submit = document.querySelector('.converter-submit');
 const converter_box = document.querySelector('.converter-box');
 
+// Link example
+const link_example = document.querySelector('.link-ex');
+
+// Warning messages
 const warning_box = document.querySelector('.warning-msg-box');
 const warning_more_btn = document.querySelector('.warning-msg-more');
 
@@ -21,7 +25,7 @@ const OPEN_CLASSNAME = 'open';
  * @param {*} e 
  */
 const onFocus = (e) => {
-    e.target.setSelectionRange(0, target.value.length);
+    e.target.setSelectionRange(0, e.target.value.length);
 }
 
 /**
@@ -41,6 +45,15 @@ const onSubmit = (e) => {
     }
 
     return convert(url, format, force_dl);
+}
+
+/**
+ * On link example click, fill the converter input
+ * @param {*} e 
+ */
+const onExampleClick = (e) => {
+    // Get clicked element
+    converter_input.value = e.target.innerHTML;
 }
 
 /**
@@ -142,6 +155,9 @@ const init = () => {
     // Form interactions
     converter_input.addEventListener("focus", onFocus);
     converter_form.addEventListener("submit", onSubmit);
+
+    // Link example interaction
+    link_example.addEventListener("click", onExampleClick);
 
     // Warning button interactions
     warning_more_btn.addEventListener("click", onWarningMoreBtnClick);

@@ -17,6 +17,7 @@
 }
 
 .converter{
+    position: relative;
     text-align: center;
 }
 
@@ -27,7 +28,6 @@
     box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.10);
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 1em;
     transition: height 0.2s;
 
     form{
@@ -38,6 +38,7 @@
 }
 
 .converter-input{
+    color: $text;
     box-sizing: border-box;
     height: 50px;
     padding: 0 20px;
@@ -89,6 +90,27 @@
 .converter-submit:not(.wait):not(.success):hover{
     background: #5a99b8;
 }
+
+.converter-ex{
+    display: block;
+    font-size: 0.8em;
+    text-align: left;
+    font-style: italic;
+    padding-left: 20px;
+    margin: 0.4em 0 1em 0;
+
+    a:link,
+    a:hover,
+    a:visited{
+        color: $text;
+        text-decoration: none;
+    }
+
+    a:hover{
+        text-decoration: underline;
+    }
+}
+
 
 .apply-shake{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;

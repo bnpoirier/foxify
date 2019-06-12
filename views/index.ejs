@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="<%= getLocale() %>">
 
 <head>
@@ -28,18 +29,20 @@
                     <%- __("index_intro2") %>
                 </p>
             </div>
-            <form id="converter" class="converter" action="/" method="POST">
+            <form class="converter" action="/" method="POST">
                 <div class="converter-box">
                     <input type="text" class="converter-input" name="u" placeholder="<%- __("converter_placeholder") %>" autocomplete="off">
                     <input type="submit" class="converter-submit" value="<%- __("converter_submit") %>">
                 </div>
+                <p class="converter-ex">Ex: <a class="link-ex" href="#">https://chrome.google.com/webstore/detail/google-keep-chrome-extens/lpcaedmchfhocbbapmcbpinfpgnhiddi</a></p>
+                
                 <input name="format" id="format-xpi" type="radio" value="xpi" checked="checked">
                 <label for="format-xpi"><%- __("converter_format_xpi") %></label>
                 <input name="format" id="format-zip" type="radio" value="zip">
                 <label for="format-zip"><%- __("converter_format_zip") %></label>
                 <input name="format" id="format-crx" type="radio" value="crx">
                 <label for="format-crx"><%- __("converter_format_crx") %></label>
-
+                
                 <input type="hidden" name="force_dl" value="<%= force_dl %>">
             </form>
             <%- include('faq/'+getLocale()) %>
