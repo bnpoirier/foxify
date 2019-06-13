@@ -47,6 +47,11 @@
     width: 100%;
 }
 
+.converter-input::placeholder{
+    color: $text;
+    opacity: 1;
+}
+
 .converter-submit{
     display: inline-block;
     min-width: 160px;
@@ -56,7 +61,6 @@
     padding: 0 20px;
     line-height: 50px;
     font-weight: bold;
-    
 }
 
 .converter-submit{
@@ -93,16 +97,17 @@
 
 .converter-ex{
     display: block;
-    font-size: 0.8em;
-    text-align: left;
+    font-size: 0.8em;    
     font-style: italic;
+    color: $text-lighter;
+    text-align: left;
     padding-left: 20px;
-    margin: 0.4em 0 1em 0;
+    margin: 0.2em 0 0.8em 0;
 
     a:link,
     a:hover,
     a:visited{
-        color: $text;
+        color: $text-lighter;
         text-decoration: none;
     }
 
@@ -130,7 +135,7 @@
     cursor: pointer;
     line-height: 20px;
     display: inline-block;
-    color: #666;
+    color: $text;
 }
 
 [type="radio"]:checked + label:before,
