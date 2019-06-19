@@ -1,181 +1,93 @@
 import '../scss/app.scss';
 
-import cookie from './libraries/cookies';
+import CRXExtension from './crx-extension';
+import animations from './animations';
+import translations from './translations';
 
 // Converter elements
-const converter_form = document.querySelector(".converter");
-const converter_input = document.querySelector('.converter-input');
-const converter_submit = document.querySelector('.converter-submit');
-const converter_box = document.querySelector('.converter-box');
+let converterForm = document.querySelector('.converter');
+let converterInput = document.querySelector('.converter-input');
 
-// Link example
-const link_example = document.querySelector('.link-ex');
+// Example link element
+let exampleLink = document.querySelector('.link-ex');
 
-// Warning messages
-const warning_box = document.querySelector('.warning-msg-box');
-const warning_more_btn = document.querySelector('.warning-msg-more');
-
-// Classes constants
-const OPEN_CLASSNAME = 'open';
+// Solution warning box element
+let solutionBox = document.querySelector('.warning-msg-box');
+let solutionBtn = document.querySelector('.warning-msg-more');
 
 
 /**
- * On input focus, select the whole URL if present
- * @param {*} e 
+ * On input click
+ * @param {Event} e
  */
-const onFocus = (e) => {
+let onConversionInputFocus = (e) => {
+    // Select the whole content in the input
     e.target.setSelectionRange(0, e.target.value.length);
 }
 
-
 /**
- * On form submit, start conversion
- * @param {*} e 
+ * On conversion form submit
+ * @param {Event} e 
  */
-const onSubmit = (e) => {
+let onConversionFormSubmit = (e) => {
     e.preventDefault();
 
-    let url = converter_form.elements['u'].value;
-    let format = converter_form.elements['format'].value;
-    let force_dl = (converter_form.elements['force_dl'].value == '1');
+    let url = converterForm.elements['u'].value;
+    let format = converterForm.elements['format'].value;
+    let forceDownload = (converterForm.elements['force_dl'].value == 1);
 
-    if(!isValidURL(url)) {
-        applyShake();
-        return false;
+    // Try to create CRXExtension instance
+    try{
+        let extension = new CRXExtension(url);
+        extension.triggerDownload(format, forceDownload);
+        animations.showLoader();
     }
-
-    // Show loading icon
-    showLoading();
-
-    return download(url, format, force_dl);
+    catch{
+        animations.shakeInput();
+    }
 }
 
-
 /**
- * On link example click, fill the converter input
+ * On example click
  * @param {*} e 
  */
-const onExampleClick = (e) => {
-    // Get clicked element value and fill the input with it
-    converter_input.value = e.target.innerHTML;
+let onExampleLinkClick = (e) => {
+    converterInput.value = e.target.innerHTML;
 }
 
-
 /**
- * If the "show more" button has been clicked
+ * On solution click
  * @param {*} e 
  */
-const onWarningMoreBtnClick = (e) => {
-    e.preventDefault();
-
-    // Toggle class open
-    if(!warning_box.classList.contains(OPEN_CLASSNAME))
-        warning_box.classList.add(OPEN_CLASSNAME);
-    else
-        warning_box.classList.remove(OPEN_CLASSNAME);
-}
-
-
-/**
- * Simple url check
- * @param {*} url 
- */
-const isValidURL = (url) => {
-    var o = document.createElement("a");
-    if (o.href = url, "chrome.google.com" == o.host) {
-        return true;
-    }
-    return false;
-}
-
-
-/**
- * Shake input if value is wrong
- */
-const applyShake = () => {
-    converter_box.classList.add('apply-shake');
-
-    setTimeout(() => {
-        converter_box.classList.remove('apply-shake');
-    }, 500);
-}
-
-
-/**
- * Show the waiting icon and remove it once the request is processed.
- */
-const showLoading = () => {
-    // Add wait class to show loading icon
-    converter_submit.classList.add('wait');
-    cookie.set('is_awaiting_download', 1);
-
-    // Check if cookie has been removed means the request is being processed.
-    let intervalID = window.setInterval(() => {
-        // When the processing has ended, remove the "wait" class
-        if(cookie.get('is_awaiting_download') == null){
-            // Show success icon
-            converter_submit.classList.replace('wait', 'success');
-            // Remove success icon 3s later...
-            window.setTimeout(() => converter_submit.classList.remove('success'), 3000);
-            // Clear this interval
-            window.clearInterval(intervalID);
-        }
-    }, 500);
-}
-
-
-/**
- * Chrome Web Store url parser
- * @param {String} url 
- * @param {Integer} index 
- */
-const getExtensionParam = (url, index) => {
-    var index = index || 0;
-    var url = url || "";
-    var rules = "^https:\/\/chrome\.google\.com\/webstore\/detail\/([a-zA-Z0-9\-]*)\/([a-z]*)";
+let onSolutionButtonClick = (e) => {
+    // Name the class used for showing or hiding content
+    const OPEN_CLASSNAME = 'open';
     
-    var matches = url.match(rules);
-
-    return (matches !== null) ? matches[index] : null;
+    // Toggle class open
+    if(!solutionBox.classList.contains(OPEN_CLASSNAME)){
+        solutionBox.classList.add(OPEN_CLASSNAME);
+        solutionBtn.innerHTML = translations.get('warning-msg_hide');
+    } 
+    else{
+        solutionBox.classList.remove(OPEN_CLASSNAME);
+        solutionBtn.innerHTML = translations.get('warning-msg_show');
+    }
 }
 
 /**
- * Get extension name from url
- * @param {String} url 
+ * Initialize event listeners
  */
-const getExtensionName = (url) => {
-    return getExtensionParam(url, 1);
-}
+let init = () => {
+    // Interactions with the conversion box
+    converterInput.addEventListener('focus', onConversionInputFocus);
+    converterForm.addEventListener('submit', onConversionFormSubmit);
 
-/**
- * Start conversion and download conversion
- * @param {*} url 
- * @param {*} format 
- */
-const download = (url, format, force_dl) => {
-    // Build download url
-    let download_url = "/download/"+getExtensionName(url)+"."+format+"?url="+url+(force_dl == true ? '&force_dl=true' : '');
+    // On example link click
+    exampleLink.addEventListener('click', onExampleLinkClick);
 
-    // Launch download on a new transparent tab
-    return window.open(download_url, "_self");
-}
+    // On solution click
+    solutionBtn.addEventListener('click', onSolutionButtonClick);
+};
 
-/**
- * On page load, declare event listeners
- */
-const init = () => {
-    // Form interactions
-    converter_input.addEventListener("focus", onFocus);
-    converter_form.addEventListener("submit", onSubmit);
-
-    // Link example interaction
-    link_example.addEventListener("click", onExampleClick);
-
-    // Warning button interactions
-    warning_more_btn.addEventListener("click", onWarningMoreBtnClick);
-}
-
-
-if(document.getElementById && document.createTextNode) {
-    init();
-}
+// Init interactions on DOM loaded
+document.addEventListener('DOMContentLoaded', init);
