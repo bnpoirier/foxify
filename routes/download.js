@@ -87,6 +87,9 @@ router.get('/:name([a-z]*).:format(crx|zip|xpi)', (req, res, next) => {
     // If converted to XPI, set application id
     toxpi.setApplicationId(getExtensionName(req.query.url));
 
+    // Remove cookie placed when download is requested
+    res.clearCookie('is_awaiting_download');
+
     // Convert file to desired format (xpi, zip or crx)
     if(format == "zip") crx.pipe(tozip).pipe(res).header('Content-type', 'application/zip');
     else if(format == "xpi" && force_dl) crx.pipe(tozip).pipe(toxpi).pipe(res).header('Content-type', 'application/octet-stream');

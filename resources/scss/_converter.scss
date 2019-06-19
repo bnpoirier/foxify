@@ -85,6 +85,7 @@
     }
     
     &.success{
+        background: $success;
         background-image: url('../images/checked.svg');
         background-repeat: no-repeat;
         background-position: center center;

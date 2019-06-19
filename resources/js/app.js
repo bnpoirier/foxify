@@ -1,5 +1,7 @@
 import '../scss/app.scss';
 
+import cookie from './libraries/cookies';
+
 // Converter elements
 const converter_form = document.querySelector(".converter");
 const converter_input = document.querySelector('.converter-input');
@@ -13,12 +15,9 @@ const link_example = document.querySelector('.link-ex');
 const warning_box = document.querySelector('.warning-msg-box');
 const warning_more_btn = document.querySelector('.warning-msg-more');
 
-// Node lists
-const faq_questions = document.getElementsByClassName('faq-question');
-const faq_boxes = document.getElementsByClassName('faq-box');
-
 // Classes constants
 const OPEN_CLASSNAME = 'open';
+
 
 /**
  * On input focus, select the whole URL if present
@@ -27,6 +26,7 @@ const OPEN_CLASSNAME = 'open';
 const onFocus = (e) => {
     e.target.setSelectionRange(0, e.target.value.length);
 }
+
 
 /**
  * On form submit, start conversion
@@ -44,52 +44,37 @@ const onSubmit = (e) => {
         return false;
     }
 
-    return convert(url, format, force_dl);
+    // Show loading icon
+    showLoading();
+
+    return download(url, format, force_dl);
 }
+
 
 /**
  * On link example click, fill the converter input
  * @param {*} e 
  */
 const onExampleClick = (e) => {
-    // Get clicked element
+    // Get clicked element value and fill the input with it
     converter_input.value = e.target.innerHTML;
 }
 
+
 /**
- * On FAQ question click
+ * If the "show more" button has been clicked
  * @param {*} e 
  */
-const onFaqClick = (e) => {
-    e.preventDefault();
-
-    // Get the box which is the parent
-    const faq_box = e.target.parentElement;
-
-    // Toggle class open
-    if(!faq_box.classList.contains(OPEN_CLASSNAME)){
-        // Remove 'open' class name to foreign boxes
-        Array.from(faq_boxes).forEach((faq_box) => {
-            faq_box.classList.remove(OPEN_CLASSNAME);
-        }); 
-        
-        // Add class to the clicked box
-        faq_box.classList.add(OPEN_CLASSNAME);
-    }
-    else
-        faq_box.classList.remove(OPEN_CLASSNAME);
-}
-
 const onWarningMoreBtnClick = (e) => {
     e.preventDefault();
 
     // Toggle class open
     if(!warning_box.classList.contains(OPEN_CLASSNAME))
-        // Add class to the clicked box
         warning_box.classList.add(OPEN_CLASSNAME);
     else
         warning_box.classList.remove(OPEN_CLASSNAME);
 }
+
 
 /**
  * Simple url check
@@ -103,6 +88,7 @@ const isValidURL = (url) => {
     return false;
 }
 
+
 /**
  * Shake input if value is wrong
  */
@@ -113,6 +99,30 @@ const applyShake = () => {
         converter_box.classList.remove('apply-shake');
     }, 500);
 }
+
+
+/**
+ * Show the waiting icon and remove it once the request is processed.
+ */
+const showLoading = () => {
+    // Add wait class to show loading icon
+    converter_submit.classList.add('wait');
+    cookie.set('is_awaiting_download', 1);
+
+    // Check if cookie has been removed means the request is being processed.
+    let intervalID = window.setInterval(() => {
+        // When the processing has ended, remove the "wait" class
+        if(cookie.get('is_awaiting_download') == null){
+            // Show success icon
+            converter_submit.classList.replace('wait', 'success');
+            // Remove success icon 3s later...
+            window.setTimeout(() => converter_submit.classList.remove('success'), 3000);
+            // Clear this interval
+            window.clearInterval(intervalID);
+        }
+    }, 500);
+}
+
 
 /**
  * Chrome Web Store url parser
@@ -142,10 +152,12 @@ const getExtensionName = (url) => {
  * @param {*} url 
  * @param {*} format 
  */
-const convert = (url, format, force_dl) => {
+const download = (url, format, force_dl) => {
+    // Build download url
     let download_url = "/download/"+getExtensionName(url)+"."+format+"?url="+url+(force_dl == true ? '&force_dl=true' : '');
 
-    let download_tab = window.open(download_url, "_self");
+    // Launch download on a new transparent tab
+    return window.open(download_url, "_self");
 }
 
 /**
@@ -161,12 +173,8 @@ const init = () => {
 
     // Warning button interactions
     warning_more_btn.addEventListener("click", onWarningMoreBtnClick);
-
-    // FAQ interactions
-    Array.from(faq_questions).forEach((faq_question) => {
-        faq_question.addEventListener('click', onFaqClick);
-    });
 }
+
 
 if(document.getElementById && document.createTextNode) {
     init();
