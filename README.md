@@ -1,9 +1,7 @@
 # Foxify
-Download and makes Chrome Web Store extensions compatible with Mozilla Firefox.
+**Download and make Google Chrome extensions runnable on Mozilla Firefox.**
 
-🚩 ***This project is still in developement.** The latest version is currently not online on [https://www.foxify.org](https://www.foxify.org).*
-
-🚨 *This tool needs Firefox to allow installation of unsigned extension. Only **Firefox Nigthly** and **Firefox Developer Edition** accept this, but you need to go to **about:config** and change the **xpinstall.signatures.required** to **False***
+🚩 Warning: This project is no longer active because Mozilla now forces extensions to be signed, which makes difficult for casual users to install an add-on.
 
 ## How to install it
 

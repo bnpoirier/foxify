@@ -47,7 +47,7 @@ app.locals = {
  * Routes
  */
 app.use('/download', require('./routes/download'));
-app.use('/', require('./routes/pages'));
+app.use('/', require('./routes/index'));
 
 /**
  * 404 error page
