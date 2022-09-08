@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "i18n": "^0.8.3",
     "istatic": "^0.3.0",
-    "jszip": "^3.1.5",
+    "jszip": "^3.7.0",
     "morgan": "~1.9.0",
     "request": "^2.83.0",
     "serve-favicon": "~2.4.5"
