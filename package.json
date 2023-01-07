@@ -9,7 +9,7 @@
   "dependencies": {
     "adm-zip": "~0.4.11",
     "body-parser": "~1.18.2",
-    "convict": "^4.4.1",
+    "convict": "^6.2.3",
     "cookie-parser": "~1.4.3",
     "csrf": "^3.0.6",
     "debug": "~2.6.9",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
