@@ -9,7 +9,7 @@
   "dependencies": {
     "adm-zip": "~0.4.11",
     "body-parser": "~1.18.2",
-    "convict": "^4.4.1",
+    "convict": "^6.2.4",
     "cookie-parser": "~1.4.3",
     "csrf": "^3.0.6",
     "debug": "~2.6.9",
